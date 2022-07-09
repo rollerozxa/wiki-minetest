@@ -3,14 +3,11 @@ local MODPATH = minetest.get_modpath("wiki")
 
 wikilib = { }
 
--- TODO: just adopt io.open and minetest.mkdir
-local private = {}
-private.open = io.open
-private.mkdir = minetest.mkdir
+dofile(MODPATH.."/md2fs.lua")
 
-loadfile(MODPATH.."/strfile.lua")(private)
-loadfile(MODPATH.."/wikilib.lua")(private)
-loadfile(MODPATH.."/internal.lua")(private)
-loadfile(MODPATH.."/plugins.lua")(private)
+dofile(MODPATH.."/strfile.lua")
+dofile(MODPATH.."/wikilib.lua")
+dofile(MODPATH.."/internal.lua")
+dofile(MODPATH.."/plugins.lua")
 
-loadfile(MODPATH.."/plugin_forum.lua")(private)
+dofile(MODPATH.."/plugin_forum.lua")

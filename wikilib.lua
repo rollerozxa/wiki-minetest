@@ -1,6 +1,4 @@
 
-local private = ...
-
 local WP = minetest.get_worldpath().."/wiki"
 
 wikilib.paths = { }
@@ -11,10 +9,10 @@ wikilib.paths.users = WP.."/users"
 
 local WIKI_FORMNAME = "wiki:wiki"
 
-private.mkdir(WP)
-private.mkdir(wikilib.paths.pages)
-private.mkdir(wikilib.paths.plugins)
-private.mkdir(wikilib.paths.users)
+minetest.mkdir(WP)
+minetest.mkdir(wikilib.paths.pages)
+minetest.mkdir(wikilib.paths.plugins)
+minetest.mkdir(wikilib.paths.users)
 
 local function name_to_filename(name)
 
@@ -44,10 +42,10 @@ local function get_page_path(name, player) --> path, is_file, allow_save
 		if name:match("^:[0-9]?$") then
 			local n = tonumber(name:sub(2,2)) or 0
 			path = "users/"..player.."/page"..n
-			private.mkdir(wikilib.paths.users.."/"..player)
+			minetest.mkdir(wikilib.paths.users.."/"..player)
 		elseif name == ":profile" then
 			path = "users/"..player.."/profile"
-			private.mkdir(wikilib.paths.users.."/"..player)
+			minetest.mkdir(wikilib.paths.users.."/"..player)
 		elseif name:match("^:.-:[0-9]$") then
 			local user, n = name:match("^:(.-):([0-9])$")
 			if user:find("..[/\\]") then
@@ -57,7 +55,7 @@ local function get_page_path(name, player) --> path, is_file, allow_save
 				return wikilib.internal_pages[".Forbidden"], false, false
 			end
 			path = "users/"..user.."/page"..n
-			private.mkdir(WP.."/users/"..user)
+			minetest.mkdir(WP.."/users/"..user)
 			allow_save = false
 		elseif name:match("^:.-:profile$") then
 			local user = name:match("^:(.-):.*$")
@@ -65,7 +63,7 @@ local function get_page_path(name, player) --> path, is_file, allow_save
 				return wikilib.internal_pages[".BadPageName"], false, false
 			end
 			path = "users/"..user.."/profile"
-			private.mkdir(WP.."/users/"..user)
+			minetest.mkdir(WP.."/users/"..user)
 			allow_save = false
 		else
 			return wikilib.internal_pages[".BadPageName"], false, false
@@ -98,7 +96,7 @@ local function load_page(name, player) --> text, links, allow_save
 	local path, is_file, allow_save = get_page_path(name, player)
 	local f
 	if is_file then
-		f = private.open(path)
+		f = io.open(path)
 		if not f then
 			f = strfile.open(wikilib.internal_pages[".NotFound"])
 		end
@@ -126,7 +124,7 @@ local function save_page(name, player, text)
 
 	if (not is_file) or (not allow_save) then return end
 
-	local f = private.open(path, "w")
+	local f = io.open(path, "w")
 	if not f then return end
 
 	f:write(text)
