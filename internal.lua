@@ -19,9 +19,9 @@ for internal topics such as this one. Users cannot edit/create such
 pages from the mod interface.
 
 See also:
-  * [.Tags]
-  * [.License]
-  * [.Help Index]
+  * <.Tags>
+  * <.License>
+  * <.Help Index>
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
@@ -29,11 +29,11 @@ See also:
 The wiki supports some special tags.
 
 You can place hyperlinks to other pages in the Wiki, by surrounding
-text in square brackets (for example, [.Intro]). Such links will
+text in square brackets (for example, <.Intro>). Such links will
 appear at the bottom of the form.
 
 See also:
-  * [.Intro]
+  * <.Intro>
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
@@ -64,68 +64,68 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
-  * Go to [.Intro].
+  * Go to <.Intro>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".NotFound_Internal"] = [[
 The specified internal page cannot be found. You may want to:
 
-  * Back to [Main].
-  * Go to [.Intro].
+  * Back to <Main>.
+  * Go to <.Intro>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".NotFound"] = [[
 This page does not exist yet.
 
-  * Back to [Main].
-  * Go to [.Help Index].
+  * Back to <Main>.
+  * Go to <.Help Index>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".BadPageName"] = [[
-The page name you entered is wrong. See [.Page Names] for more info.
+The page name you entered is wrong. See <.Page Names> for more info.
 
-  * Back to [Main].
-  * Go to [.Help Index].
+  * Back to <Main>.
+  * Go to <.Help Index>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".Forbidden"] = [[
 You have not enough privileges to view this page.
 
-  * Back to [Main].
-  * Go to [.Help Index].
+  * Back to <Main>.
+  * Go to <.Help Index>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".Help Index"] = [[
-  * [.Intro]
-  * [.Plugins]
-  * [.Page Names]
-  * [.User Pages]
+  * <.Intro>
+  * <.Plugins>
+  * <.Page Names>
+  * <.User Pages>
 
-  * Back to [Main].
+  * Back to <Main>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".Page Names"] = [[
 Page names must be in any of the following formats:
-  <pagename>
-    Display global page <pagename>.
-  :<n>
-    Display page <n> from your user space. <n> must be a number between
-    0 and 9. See [.User Pages] for more info.
-  :
-    This is equivalent to ":0" (shows your private page).
-  :<user>:<n>
-    Display page "Page Name" from the specified user's space. Note that page
-    number 0 is never accessible this way, even if you specify yourself as
-    <user>.
+  `<pagename>`
+    Display global page `<pagename>`.
+  `:<n>`
+    Display page `<n>` from your user space. `<n>` must be a number between
+    0 and 9. See `<.User Pages>` for more info.
+  `:`
+    This is equivalent to `:0` (shows your private page).
+  `:<user>:<n>`
+    Display page `"Page Name"` from the specified user's space. Note that page
+    number `0` is never accessible this way, even if you specify yourself as
+    `<user>`.
 
-  * Back to [.Help Index].
-  * Back to [Main].
+  * Back to <.Help Index>.
+  * Back to <Main>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
@@ -135,15 +135,15 @@ are accessed through the special page names ":<n>", and ":<user>:<n>". Page 0
 is your private page. This page is not accessible to anyone but you. You can
 use it to write down secret locations, etc.
 
-  * Back to [.Help Index].
-  * Back to [Main].
+  * Back to <.Help Index>.
+  * Back to <Main>.
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
 [".My Pages"] = [[
-  * Profile: [:profile]
-  * Private page: [:0]
-  * Pages: [:1] [:2] [:3] [:4] [:5] [:6] [:7] [:8] [:9]
+  * Profile: <:profile>
+  * Private page: <:0>
+  * Pages: <:1> <:2> <:3> <:4> <:5> <:6> <:7> <:8> <:9>
 ]],
 ----------------------------------------------------------------
 ----------------------------------------------------------------
@@ -154,8 +154,8 @@ use it to write down secret locations, etc.
 	end
 	page = (page
 		.. "\n"
-		.. "  * Back to [.Help Index].\n"
-		.. "  * Back to [Main].\n"
+		.. "  * Back to <.Help Index>.\n"
+		.. "  * Back to <Main>.\n"
 	)
 	return page
 end,

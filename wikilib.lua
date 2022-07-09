@@ -226,6 +226,9 @@ function wikilib.handle_formspec(player, formname, fields)
 	elseif fields.go then
 		wikilib.show_wiki_page(plname, fields.page)
 		return true
+	else
+		local newpage = minetest.decode_base64(fields.text:sub(8,-1))
+		wikilib.show_wiki_page(plname, newpage)
 	end
 end
 

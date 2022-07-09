@@ -175,10 +175,12 @@ local function emphasisParse(text, state)
 	local finished = false
 	local last = 1
 	while finished == false do
-		if text:find("<%S.-%S>", last) then --url
-			local start,finish = text:find("<%S.-%S>", last)
-			text = text:sub(1,start-1) .. "<style color=#77AAFF>" .. text:sub(start+1,finish-1) .. "</style>" .. text:sub(finish+1)
-			last = finish + 36 --number of characters added minus 2
+		if text:find("<.->", last) then --url
+			local start,finish = text:find("<.->", last)
+			-- Encode
+			text = text:sub(1,start-1) .. "<style color=#77AAFF><action name="..minetest.encode_base64(text:sub(start+1,finish-1))..">" .. text:sub(start+1,finish-1) .. "</action></style>" .. text:sub(finish+1)
+			print(text)
+			last = finish + 64 --number of characters added minus 2
 		else
 			finished = true
 		end
